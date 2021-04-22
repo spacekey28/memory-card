@@ -1,0 +1,12 @@
+.cards {
+  display: flex;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+.card {
+  width: 25%;
+  max-width: 25%;
+  background-color: blue;
+}
