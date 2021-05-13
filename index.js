@@ -88,4 +88,9 @@ function enable(){
   })
 }
 
+function moveCounter(){    
+  moves++;    
+  counter.innerHTML = moves;
+}
+
 window.onload = startGame();
