@@ -36,6 +36,10 @@ function startGame() {
       cardDeck.appendChild(item);
     });
   }
+
+  var timer = document.querySelector(".timer");
+  timer.innerHTML = "0 mins 0 secs";
+  clearInterval(interval);
 }
 
 function cardOpen() {
@@ -91,6 +95,31 @@ function enable(){
 function moveCounter(){    
   moves++;    
   counter.innerHTML = moves;
+  if (moves == 1){
+    second = 0;
+    minute = 0;
+    hour = 0;
+    startTimer();
+  }
 }
+
+var second = 0, minute = 0;
+var timer = document.querySelector(".timer");
+var interval;
+function startTimer(){
+  interval = setInterval(function(){
+    timer.innerHTML = minute+"mins "+second+"secs";
+    second++;
+    if (second == 60){
+      minute++;
+      second = 0;
+    }
+    if (minute == 60){
+      hour++;
+      minute=0;
+    }
+  }, 1000);
+}
+
 
 window.onload = startGame();
