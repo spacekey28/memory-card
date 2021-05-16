@@ -2,8 +2,20 @@ import './assets/style/main.scss';
 
 let card = document.getElementsByClassName("card");
 let cards = [...card];
+
+const cardDeck = document.querySelector(".cards");
+
+let moves = 0;
+let counter = document.querySelector(".moves");
+
+let matchedCard = document.getElementsByClassName("match");
+
+var openedCards = [];
+
 for (var i=0; i < cards.length; i++) {
-  cards[i].addEventListener("click", displayCard);
+  let card = cards[i];
+  card.addEventListener("click", displayCard);
+  card.addEventListener("click", cardOpen);
 };
 
 var displayCard = function(){
@@ -28,14 +40,13 @@ function shuffle(array) {
   return array;
 }
 
-const cardDeck = document.querySelector(".cards");
 function startGame() {
-  var shuffledCards = shuffle(cards);
-  for (var i=0; i < shuffledCards.length; i++) {
-    [].forEach.call(shuffledCards, function(item){
-      cardDeck.appendChild(item);
-    });
-  }
+  // var shuffledCards = shuffle(cards);
+  // for (var i=0; i < shuffledCards.length; i++) {
+  //   [].forEach.call(shuffledCards, function(item){
+  //     cardDeck.appendChild(item);
+  //   });
+  // }
 
   var timer = document.querySelector(".timer");
   timer.innerHTML = "0 mins 0 secs";
@@ -103,7 +114,7 @@ function moveCounter(){
   }
 }
 
-var second = 0, minute = 0;
+var second = 0, minute = 0, hour = 0;
 var timer = document.querySelector(".timer");
 var interval;
 function startTimer(){

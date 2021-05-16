@@ -11,6 +11,7 @@
   "author": "Peter Son",
   "license": "ISC",
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3",
     "sass": "^1.32.11"
   }
 }
