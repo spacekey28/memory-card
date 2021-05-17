@@ -18,6 +18,8 @@ for (var i=0; i < cards.length; i++) {
   card.addEventListener("click", cardOpen);
 };
 
+document.getElementById("restartGame").addEventListener("click", startGame);
+
 var displayCard = function(){
   this.classList.toggle("open");
   this.classList.toggle("show");
@@ -41,12 +43,17 @@ function shuffle(array) {
 }
 
 function startGame() {
-  // var shuffledCards = shuffle(cards);
-  // for (var i=0; i < shuffledCards.length; i++) {
-  //   [].forEach.call(shuffledCards, function(item){
-  //     cardDeck.appendChild(item);
-  //   });
-  // }
+  var shuffledCards = shuffle(cards);
+  for (var i=0; i < shuffledCards.length; i++) {
+    cardDeck.innerHTML = "";
+    [].forEach.call(shuffledCards, function(item){
+      cardDeck.appendChild(item);
+    });
+    shuffledCards[i].classList.remove("show", "open", "match", "disabled");
+  }
+
+  moves = 0;
+  counter.innerHTML = moves;
 
   var timer = document.querySelector(".timer");
   timer.innerHTML = "0 mins 0 secs";
@@ -132,5 +139,15 @@ function startTimer(){
   }, 1000);
 }
 
+function moveCounter(){
+  moves++;
+  counter.innerHTML = moves;
+  if(moves == 1){
+    second = 0;
+    minute = 0;
+    hour = 0;
+    startTimer();
+  }
+}
 
 window.onload = startGame();
