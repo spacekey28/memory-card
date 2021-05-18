@@ -150,4 +150,34 @@ function moveCounter(){
   }
 }
 
+
+let modal = document.getElementById("popup");
+let closeIcon = document.querySelector(".close");
+
+function congrats(){
+  if(matchedCard.length == 16){
+    clearInterval(interval);
+    finalTime = timer.innerHTML;
+
+    // show modal congrats
+    modal.classList.add("show");
+    document.getElementById("finalMove").innerHTML = moves;
+    document.getElementById("totalTime").innerHTML = finalTime;
+
+    closeModal();
+  }
+}
+
+function closeModal(){
+  closeIcon.addEventListener("click", function(e){
+    modal.classList.remove("show");
+    startGame();
+  });
+}
+
+function startAgain(){
+  modal.classList.remove("show");
+  startGame();
+}
+
 window.onload = startGame();
