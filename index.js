@@ -53,7 +53,7 @@ function startGame() {
   }
 
   moves = 0;
-  counter.innerHTML = moves;
+  counter.innerHTML = moves+" moves";
 
   var timer = document.querySelector(".timer");
   timer.innerHTML = "0 mins 0 secs";
