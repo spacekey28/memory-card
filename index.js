@@ -16,6 +16,7 @@ for (var i=0; i < cards.length; i++) {
   let card = cards[i];
   card.addEventListener("click", displayCard);
   card.addEventListener("click", cardOpen);
+  card.addEventListener("click", congrats);
 };
 
 document.getElementById("restartGame").addEventListener("click", startGame);
@@ -43,18 +44,23 @@ function shuffle(array) {
 }
 
 function startGame() {
-  var shuffledCards = shuffle(cards);
-  for (var i=0; i < shuffledCards.length; i++) {
+  openedCards = [];
+
+  cards = shuffle(cards);
+  for (var i=0; i < cards.length; i++) {
     cardDeck.innerHTML = "";
-    [].forEach.call(shuffledCards, function(item){
+    [].forEach.call(cards, function(item){
       cardDeck.appendChild(item);
     });
-    shuffledCards[i].classList.remove("show", "open", "match", "disabled");
+    cards[i].classList.remove("show", "open", "match", "disabled");
   }
 
   moves = 0;
   counter.innerHTML = moves+" moves";
 
+  second = 0;
+  minute = 0;
+  hour = 0;
   var timer = document.querySelector(".timer");
   timer.innerHTML = "0 mins 0 secs";
   clearInterval(interval);
@@ -74,10 +80,10 @@ function cardOpen() {
 }
 
 function matched(){
-  openedCards[0].classList.add("match");
-  openedCards[1].classList.add("match");
-  openedCards[0].classList.remove("show", "open");
-  openedCards[1].classList.remove("show", "open");
+  openedCards[0].classList.add("match", "disabled");
+  openedCards[1].classList.add("match", "disabled");
+  openedCards[0].classList.remove("show", "open", "no-event");
+  openedCards[1].classList.remove("show", "open", "no-event");
   openedCards = [];
 }
 
@@ -86,11 +92,11 @@ function unmatched(){
   openedCards[1].classList.add("unmatched");
   disable();
   setTimeout(function(){
-    openedCards[0].classList.remove("show", "open", "unmatched");
-    openedCards[1].classList.remove("show", "open", "unmatched");
+    openedCards[0].classList.remove("show", "open", "no-event", "unmatched");
+    openedCards[1].classList.remove("show", "open", "no-event", "unmatched");
     enable();
     openedCards = [];
-  }, 1000);
+  }, 1100);
 }
 
 // disable cards temporarily
@@ -110,16 +116,6 @@ function enable(){
   })
 }
 
-function moveCounter(){    
-  moves++;    
-  counter.innerHTML = moves;
-  if (moves == 1){
-    second = 0;
-    minute = 0;
-    hour = 0;
-    startTimer();
-  }
-}
 
 var second = 0, minute = 0, hour = 0;
 var timer = document.querySelector(".timer");
@@ -141,7 +137,7 @@ function startTimer(){
 
 function moveCounter(){
   moves++;
-  counter.innerHTML = moves;
+  counter.innerHTML = moves + " moves";
   if(moves == 1){
     second = 0;
     minute = 0;
