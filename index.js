@@ -12,13 +12,6 @@ let matchedCard = document.getElementsByClassName("match");
 
 var openedCards = [];
 
-for (var i=0; i < cards.length; i++) {
-  let card = cards[i];
-  card.addEventListener("click", displayCard);
-  card.addEventListener("click", cardOpen);
-  card.addEventListener("click", congrats);
-};
-
 document.getElementById("restartGame").addEventListener("click", startGame);
 
 var displayCard = function(){
@@ -42,6 +35,8 @@ function shuffle(array) {
   }
   return array;
 }
+
+window.onload = startGame();
 
 function startGame() {
   openedCards = [];
@@ -176,4 +171,10 @@ function startAgain(){
   startGame();
 }
 
-window.onload = startGame();
+for (var i=0; i < cards.length; i++) {
+  let card = cards[i];
+  card.addEventListener("click", displayCard);
+  card.addEventListener("click", cardOpen);
+  card.addEventListener("click", congrats);
+};
+
