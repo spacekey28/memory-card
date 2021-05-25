@@ -68,6 +68,11 @@
   
 }
 
+// disable click on SVGs
+svg {
+  pointer-events: none;
+}
+
 /* animations */
 @keyframes flipInY {
 	from {

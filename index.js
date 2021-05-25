@@ -175,6 +175,6 @@ for (var i=0; i < cards.length; i++) {
   let card = cards[i];
   card.addEventListener("click", displayCard);
   card.addEventListener("click", cardOpen);
-  // card.addEventListener("click", congrats);
+  card.addEventListener("click", congrats);
 };
 
