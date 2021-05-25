@@ -3,7 +3,7 @@ import './assets/style/main.scss';
 let card = document.getElementsByClassName("card");
 let cards = [...card];
 
-const cardDeck = document.querySelector(".cards");
+const cardDeck = document.getElementById("cardDeck");
 
 let moves = 0;
 let counter = document.querySelector(".moves");
@@ -175,6 +175,6 @@ for (var i=0; i < cards.length; i++) {
   let card = cards[i];
   card.addEventListener("click", displayCard);
   card.addEventListener("click", cardOpen);
-  card.addEventListener("click", congrats);
+  // card.addEventListener("click", congrats);
 };
 
