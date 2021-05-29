@@ -13,6 +13,7 @@ let matchedCard = document.getElementsByClassName("match");
 var openedCards = [];
 
 document.getElementById("restartGame").addEventListener("click", startGame);
+document.getElementById("playAgain").addEventListener("click", startAgain);
 
 var displayCard = function(){
   this.classList.toggle("open");
@@ -148,7 +149,7 @@ let closeIcon = document.querySelector(".close");
 function congrats(){
   if(matchedCard.length == 16){
     clearInterval(interval);
-    finalTime = timer.innerHTML;
+    let finalTime = timer.innerHTML;
 
     // show modal congrats
     modal.classList.add("show");
