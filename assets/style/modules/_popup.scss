@@ -20,6 +20,7 @@
     background-color: #fff;
     border-radius: 5px;
     width: 80%;
+    text-align: center;
     position: relative;
     transition: all 5s ease-in-out;
   }
@@ -27,6 +28,7 @@
   h2 {
     margin-top: 0;
     color: #333;
+    text-align: center;
   }
 
   .close {
@@ -48,6 +50,20 @@
     max-height: 30%;
     overflow: auto;
     text-align: center;
+  }
+}
+
+#playAgain {
+  border: none;
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  background-color: #279e70;
+  color: #fff;
+
+  &:hover {
+    opacity: 0.8;
   }
 }
 
